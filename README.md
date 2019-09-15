@@ -1,6 +1,6 @@
 # Cox-Automotive
 
-##Getting Started
+## Getting Started
 
 ```
 npm i 
