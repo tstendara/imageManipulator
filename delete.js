@@ -11,8 +11,6 @@ new Promise(function(resolve, reject) {
         }
     })
 }).then(result => {
-    console.log(result)
-
     for(let x = 1; x<result.length; x++){
         new Promise(function(resolve, reject) {
             fs.unlink(`./updatedPhotos/${result[x]}`, function(err) {

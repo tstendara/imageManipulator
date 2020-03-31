@@ -4,13 +4,16 @@ const path = require('path')
 let total = 0;
 
 const directoryPath = path.join(__dirname, 'photos')
+const originalFile = './photos' 
+const editedFile = './updatedPhotos'
 
-const makeEmBetter = () => {
+const readingDir = () => {
     
     new Promise(function(resolve, reject) {
         fs.readdir(directoryPath, (err, files) => {
             if(err){
-                return('unable to read directory' + err)
+                reject('unable to read directory' + err)
+
             } else {
                 resolve(files)
             }
@@ -25,24 +28,24 @@ const makeEmBetter = () => {
 
                 new Promise(function(resolve, reject) {
 
-                    Jimp.read(`./photos/${allPhotos[x]}`)
+                    Jimp.read(`${originalFile}/${allPhotos[x]}`)
                     .then(image => {
                         return image
                             .color([
                                 { apply: 'brighten', params: [9]}
                             ])
-                            // .quality(100)
-                            .write(`./updatedPhotos/${withoutExtension}.JPEG`)
+                            .write(`${editedFile}/${withoutExtension}.JPEG`)
                     })
                     .catch(err => {
                         console.log(err)
                     })
                     .then(_ => {
-                        if(x < 2){
-                            console.log(x + " Photo left!")
+                        if(x === allPhotos.length - 1){
+                            console.log('imageEditer3000 done')
                         }else{
-                            console.log(x + " Photo's left!")
+                            console.log(total - (x + 1) + ` Photo's left`)
                         }
+                        
                         resolve('next pic')
                     })
                 })
@@ -51,7 +54,4 @@ const makeEmBetter = () => {
         editingPhotos(photos)
     })
 }
-makeEmBetter()
-
-
-
+readingDir()
