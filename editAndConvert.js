@@ -29,9 +29,9 @@ const makeEmBetter = () => {
                     .then(image => {
                         return image
                             .color([
-                                { apply: 'lighten', params: [5.5]},
-                                { apply: 'saturate', params: [3]}
+                                { apply: 'brighten', params: [9]}
                             ])
+                            // .quality(100)
                             .write(`./updatedPhotos/${withoutExtension}.JPEG`)
                     })
                     .catch(err => {
