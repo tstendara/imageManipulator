@@ -1,6 +1,3 @@
-# ImageManipulator
-  This is a server that converts images, edits and then puts them into a file when done.
-
 ## Getting Started
 
 1. Add all photos that you need editted into the photos file.
